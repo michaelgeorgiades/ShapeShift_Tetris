@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shapeshift-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shapeshift
+  template:
+    metadata:
+      labels:
+        app: shapeshift
+    spec:
+      containers:
+      - name: shapeshift
+        image: stinkygreek/shapeshift:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
